@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import Medication from './Components/Medication';
+import Medication from './components/Medication/Medication';
 function App() {
   return (
     <>
