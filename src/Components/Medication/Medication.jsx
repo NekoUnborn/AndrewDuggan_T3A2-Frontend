@@ -22,7 +22,7 @@ const Medication = () => {
         for(let item of data){
             medicine.push(item)
         }
-        setList([...list, ...medicine])
+        setList([...medicine])
     }
     
     return (
@@ -34,7 +34,7 @@ const Medication = () => {
                 return <Box key={index} name={item[0]} description={item[1]}></Box>
             })}
         </MedicationList>
-        <Link to='/medication/add'>Add a Medicine</Link>
+        <Link to='/medicine/add'>Add a Medicine</Link>
         </>
     )
     }

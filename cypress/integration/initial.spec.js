@@ -6,7 +6,7 @@
 // https://on.cypress.io/writing-first-test
 describe('My First Test', () =>{
     it('Clicking "add medication" naviagtes to a new url', () =>{
-        cy.visit('http://localhost:3000/medication')
+        cy.visit('http://localhost:3000/medicine')
         cy.contains('Add').click()
         cy.url().should('include', '/add')
     })
