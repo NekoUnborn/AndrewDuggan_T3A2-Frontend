@@ -9,9 +9,13 @@ describe('Adding Medication to DB from Front-end', ()=>{
         cy.get('form > textarea')
     })
 } )
-describe('Test', ()=>{
-    it('should run the previous test and this test', () =>{
-        cy.contains('Name')
-        cy.get('form > label')
+describe('CRUD Functions for medicine', ()=>{
+    it('Should add a medicine to the DB', () =>{
+        cy.visit('http://localhost:3000/medicine/add')
+        cy.get('form > input[type="text"]').type('Anti Psychotics')
+        cy.get('form > textarea[type="text"]').type('Makes ya less crazy')
+        cy.get('form > button[type="submit"]').click()
+        cy.get('button').click()
+        cy.contains('Insulin')
     })
 })
