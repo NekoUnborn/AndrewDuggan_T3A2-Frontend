@@ -8,7 +8,9 @@ const MedBox = styled.div`
 const Box = (props) => {
     return (
         <MedBox>
-            {props.showDesc ? <p>{props.description}</p> : <p> {props.name}</p>}
+        {props.name}
+        <br></br>
+        {props.description}
         </MedBox>
     )
 }
