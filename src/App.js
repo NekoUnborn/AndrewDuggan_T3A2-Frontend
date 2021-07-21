@@ -48,7 +48,9 @@ function App() {
     <stateContext.Provider value={{ ...store, dispatch }}>
       {store.token ? (
         <>
-          <h1>Journal</h1>
+          <h1>
+            MediTrack
+          </h1>
           <BrowserRouter>
             {store.token.username === "admin" ? <Nav /> : <Admin />}
             <Switch>
