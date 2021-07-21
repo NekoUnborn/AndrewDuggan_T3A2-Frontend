@@ -1,9 +1,16 @@
+import styled from "styled-components"
+const MedBox = styled.div`
+    flex-basis: 50%;
+    text-align:center;
+    border: black solid 2px;
+    box-sizing: border-box;
+`
 const Box = (props) => {
     const showDesc = false
     return (
-        <>
-        {showDesc ? <p>{props.description}</p> : <p> {props.name}</p>}
-        </>
+        <MedBox>
+            {showDesc ? <p>{props.description}</p> : <p> {props.name}</p>}
+        </MedBox>
     )
 }
 
