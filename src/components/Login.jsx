@@ -7,10 +7,11 @@ export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { dispatch } = useContext(stateContext);
+  console.log(process.env.REACT_APP_API_ENDPOINT_DEV)
   const submit = async (event) => {
     event.preventDefault();
     const user = { username, password };
-    const res = await fetch(`http://localhost:4000/api/v1/users/login`, {
+    const res = await fetch('http://localhost:4000/api/v1/users/login', {
       method: "POST",
       body: JSON.stringify(user),
       headers: {
