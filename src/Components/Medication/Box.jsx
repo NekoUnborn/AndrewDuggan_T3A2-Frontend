@@ -6,10 +6,9 @@ const MedBox = styled.div`
     box-sizing: border-box;
 `
 const Box = (props) => {
-    const showDesc = false
     return (
         <MedBox>
-            {showDesc ? <p>{props.description}</p> : <p> {props.name}</p>}
+            {props.showDesc ? <p>{props.description}</p> : <p> {props.name}</p>}
         </MedBox>
     )
 }
