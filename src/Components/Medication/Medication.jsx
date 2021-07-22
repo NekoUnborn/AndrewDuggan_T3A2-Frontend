@@ -8,7 +8,20 @@ const MedicationList = styled.div`
     justify-content: space-between;
     width: 100%;
     flex-wrap: wrap;
+    background-color: pink;
+    height: 700px;
+    overflow: scroll;
+    padding: 10px;
 `
+const Text = styled.p`
+    text-decoration: none;
+    color: black;
+    text-align: center;
+`
+const Button = styled.button`
+    margin-left: 40%;
+`
+
 
 const Medication = (props) => {
     const {medicine}  = props
@@ -27,7 +40,7 @@ const Medication = (props) => {
                 <Box key={index} name={item[0]} description={item[1]} />
             )})}
         </MedicationList>
-        <Link to='/medicine/add'>Add a Medicine</Link>
+        <Link to='/medicine/add'><Button><Text>Add Medicine</Text></Button></Link>
         </>
     )
     }
