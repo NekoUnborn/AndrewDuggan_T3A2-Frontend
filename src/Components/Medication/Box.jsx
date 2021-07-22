@@ -8,7 +8,7 @@ const MedBox = styled.div`
 const Box = (props) => {
     return (
         <MedBox>
-        {props.name}
+        <li>{props.name}</li>
         <br></br>
         {props.description}
         </MedBox>
