@@ -30,7 +30,16 @@ export default function stateReducer(currentState, action) {
         token: action.data.token,
       };
     }
-
+    case 'updateMedicineList' : {
+      return {
+          ...currentState, medicine: action.data  
+      }
+  }
+    case 'addMedicine' :{   
+      return {
+          ...currentState, medicine: [...currentState.medicine, action.data]
+      }
+  }
     default:
       return currentState;
   }

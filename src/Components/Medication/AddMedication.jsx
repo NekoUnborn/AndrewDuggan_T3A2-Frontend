@@ -1,22 +1,30 @@
 import { useHistory } from "react-router"
-import { useState } from "react"
+import { useState, useReducer } from "react"
+import medicineReducer from "./medicineStateReducer"
 
 const AddMedication = (props) => {
-    const [prompt, setPrompt] = useState(null)
+    
     let history = useHistory()
-    async function addMedicine(data){
-        const res = await fetch('http://localhost:4000/api/v1/medicines', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({name: data.name, description: data.description})})
-        const message = await res.json()
-        setPrompt(message.message)
-        
-    }
+    
     function submit(e){
+        async function addMedicine(data) {
+            const res = await fetch('http://localhost:4000/api/v1/medicines', {
+                method: 'POST',
+                headers: {'Content-Type' : 'application/json'},
+                body: JSON.stringify(data)
+            })
+        }
         e.preventDefault()
         const data = {
             name: e.target.elements.medicine.value,
             description: e.target.elements.description.value
         }
         addMedicine(data)
+        const update = []
+        update.push(data.name)
+        update.push(data.description)
+        props.updateMedicine(update)
+        
         // set the message on the home page to be the result messgae etc using state etc. 
         history.push('/medicine')
     }

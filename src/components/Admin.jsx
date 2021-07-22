@@ -5,7 +5,8 @@ const Admin = () => {
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/child">Category</Link></li>
+            <li><Link to="/child">Children</Link></li>
+            <li><Link to='/medicine'>Medicine</Link></li>
           </ul>
         </nav>
     )

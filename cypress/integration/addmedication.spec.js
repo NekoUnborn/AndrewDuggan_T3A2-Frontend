@@ -8,8 +8,6 @@ describe('Adding Medication to DB from Front-end', ()=>{
         cy.get('form > button')
         cy.get('form > textarea')
     })
-} )
-describe('CRUD Functions for medicine', ()=>{
     it('Should add a medicine to the DB', () =>{
         cy.visit('http://localhost:3000/medicine/add')
         cy.get('form > input[type="text"]').type(medicine)
@@ -18,9 +16,6 @@ describe('CRUD Functions for medicine', ()=>{
         cy.get('button').click()
         cy.contains('Medicine already exists')
     })
-})
-
-describe('Testing Validation on the addition of medicine fail', ()=>{
     it('Should fail if the name is blank',()=> {
         cy.visit('http://localhost:3000/medicine/add')
         cy.get('form > textarea[type="text"]').type(description)
@@ -35,4 +30,4 @@ describe('Testing Validation on the addition of medicine fail', ()=>{
         cy.get('button').click()
         cy.contains("Description can't be blank")
     })
-})
+} )
