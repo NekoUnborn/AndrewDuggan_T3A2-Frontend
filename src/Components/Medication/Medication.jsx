@@ -40,7 +40,7 @@ const Medication = () => {
     // }
     return (
         <>
-        <input type='text' onKeyPress={filter}></input>
+        <input type='text' onKeyPress={filter} placeholder='Filter'></input>
         <MedicationList>
             {filteredMedicine && filteredMedicine.length > 0 ? filteredMedicine.map((item, index) =>{
                 return (
