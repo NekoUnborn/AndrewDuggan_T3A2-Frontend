@@ -27,12 +27,6 @@ function App() {
   });
   const {medicine, children} = store
 
- function updateMedicine(newMedicine){
-    dispatch({
-      type: 'addMedicine',
-      data: newMedicine
-    })
-  }
   useEffect(() => {
     async function setMedicines() {
       if (!store.token) return;
@@ -95,7 +89,7 @@ function App() {
                 <Medication/>
               </Route>
               <Route exact path='/medicine/add' >
-                  <AddMedication updateMedicine={updateMedicine}/>
+                  <AddMedication/>
               </Route>
               <Route exact path='/child'>
                   <Child children={children}></Child>

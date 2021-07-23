@@ -1,15 +1,18 @@
 import { useHistory } from "react-router"
-import { useState, useReducer } from "react"
+import {useContext } from "react"
+import { stateContext } from "../../stateReducer"
 
 const AddMedication = (props) => {
     
     let history = useHistory()
+    const {dispatch , token} = useContext(stateContext)
     
     function submit(e){
         async function addMedicine(data) {
             const res = await fetch('http://localhost:4000/api/v1/medicines', {
                 method: 'POST',
-                headers: {'Content-Type' : 'application/json'},
+                headers: {Authorization: `Bearer ${token}`,
+                            'Content-Type' : 'application/json'},
                 body: JSON.stringify(data)
             })
         }
@@ -19,10 +22,10 @@ const AddMedication = (props) => {
             description: e.target.elements.description.value
         }
         addMedicine(data)
-        const update = []
-        update.push(data.name)
-        update.push(data.description)
-        props.updateMedicine(update)
+        dispatch({
+            type: 'addMedicine',
+            data: [data.name, data.description]
+        })
         
         // set the message on the home page to be the result messgae etc using state etc. 
         history.push('/medicine')
