@@ -1,8 +1,8 @@
-import { useEffect, useReducer } from "react"
-import Box from "./Box"
+import { useEffect, useReducer, useContext} from 'react'
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-import medicineReducer from "./medicineStateReducer"
+import { stateContext } from "../../stateReducer"
+import Box from './Box'
 const MedicationList = styled.div`
     display:flex;
     justify-content: space-between;
@@ -22,9 +22,16 @@ const Button = styled.button`
     margin-left: 40%;
 `
 
+const Medication = () => {
+    const { medicine, dispatch, filteredMedicine}= useContext(stateContext)
 
-const Medication = (props) => {
-    const {medicine}  = props
+    function filter (e) {
+        dispatch({
+            type: 'filterMedicineList',
+            filterValue: e.target.value
+        })
+    }
+
     // setList([...medicine])
     // const filter = (e) =>{
     //     let filtered = list.filter((item)=> item[0].includes(e.target.value))
@@ -33,9 +40,13 @@ const Medication = (props) => {
     // }
     return (
         <>
-        <input type='text'></input>
+        <input type='text' onKeyPress={filter}></input>
         <MedicationList>
-            {medicine.map((item, index) =>{
+            {filteredMedicine && filteredMedicine.length > 0 ? filteredMedicine.map((item, index) =>{
+                return (
+                    <Box key={index} name={item[0]} description={item[1]}/>
+                )
+                }) : medicine.map((item, index) =>{
                 return (
                 <Box key={index} name={item[0]} description={item[1]} />
             )})}

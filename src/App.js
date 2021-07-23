@@ -22,6 +22,7 @@ function App() {
     entries: [],
     token: localStorage.getItem("token"),
     medicine: [],
+    filteredMedicine: [],
     children: []
   });
   const {medicine, children} = store
@@ -91,7 +92,7 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/Signup" component={Signup} />
               <Route exact path="/medicine">
-                <Medication medicine={medicine}/>
+                <Medication/>
               </Route>
               <Route exact path='/medicine/add' >
                   <AddMedication updateMedicine={updateMedicine}/>

@@ -1,6 +1,5 @@
 import { useHistory } from "react-router"
 import { useState, useReducer } from "react"
-import medicineReducer from "./medicineStateReducer"
 
 const AddMedication = (props) => {
     

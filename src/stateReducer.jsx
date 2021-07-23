@@ -35,6 +35,17 @@ export default function stateReducer(currentState, action) {
           ...currentState, medicine: action.data  
       }
   }
+  case 'filterMedicineList' : {
+    let newFilter = []
+    for(let item of currentState.medicine){
+      if(item[0].includes(action.filterValue)){
+        newFilter.push(item)
+      }
+    }
+    return {
+      ...currentState, filteredMedicine: newFilter
+    }
+  }
     case 'addMedicine' :{   
       return {
           ...currentState, medicine: [...currentState.medicine, action.data]
