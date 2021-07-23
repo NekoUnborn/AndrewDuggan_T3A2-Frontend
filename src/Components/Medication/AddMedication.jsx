@@ -15,6 +15,16 @@ const AddMedication = (props) => {
                             'Content-Type' : 'application/json'},
                 body: JSON.stringify(data)
             })
+            const message = await res.json()
+            // console.log(message.message)
+            dispatch({
+                type: 'addMedicine',
+                data: [data.name, data.description]
+            })
+            dispatch({
+                type: 'setMessage',
+                data: message.message
+            })
         }
         e.preventDefault()
         const data = {
@@ -22,10 +32,7 @@ const AddMedication = (props) => {
             description: e.target.elements.description.value
         }
         addMedicine(data)
-        dispatch({
-            type: 'addMedicine',
-            data: [data.name, data.description]
-        })
+        
         
         // set the message on the home page to be the result messgae etc using state etc. 
         history.push('/medicine')

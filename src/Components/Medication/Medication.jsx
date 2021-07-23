@@ -23,8 +23,8 @@ const Button = styled.button`
 `
 
 const Medication = () => {
-    const { medicine, dispatch, filteredMedicine}= useContext(stateContext)
-
+    const { medicine, dispatch, filteredMedicine, message}= useContext(stateContext)
+    console.log(message)
     function filter (e) {
         dispatch({
             type: 'filterMedicineList',
@@ -40,6 +40,9 @@ const Medication = () => {
     // }
     return (
         <>
+        <h3>
+            {message}
+            </h3>
         <input type='text' onKeyPress={filter} placeholder='Filter'></input>
         <MedicationList>
             {filteredMedicine && filteredMedicine.length > 0 ? filteredMedicine.map((item, index) =>{
@@ -51,7 +54,7 @@ const Medication = () => {
                 <Box key={index} name={item[0]} description={item[1]} />
             )})}
         </MedicationList>
-        <Link to='/medicine/add'><Button><Text>Add Medicine</Text></Button></Link>
+        <Link id='addmed' to='/medicine/add'><Button><Text>Add Medicine</Text></Button></Link>
         </>
     )
     }

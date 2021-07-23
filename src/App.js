@@ -23,7 +23,8 @@ function App() {
     token: localStorage.getItem("token"),
     medicine: [],
     filteredMedicine: [],
-    children: []
+    children: [],
+    message: null
   });
   const {medicine, children} = store
 
@@ -71,7 +72,7 @@ function App() {
     setMedicines();
     setChildren();
   }, [store.token]);
-  console.log(store)
+  // console.log(store)
 
   return (
     <stateContext.Provider value={{ ...store, dispatch }}>

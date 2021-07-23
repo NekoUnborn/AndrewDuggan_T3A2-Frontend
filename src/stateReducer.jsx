@@ -51,6 +51,11 @@ export default function stateReducer(currentState, action) {
           ...currentState, medicine: [...currentState.medicine, action.data]
       }
   }
+  case 'setMessage' : {
+    return {
+      ...currentState, message: action.data
+    }
+  }
     default:
       return currentState;
   }
