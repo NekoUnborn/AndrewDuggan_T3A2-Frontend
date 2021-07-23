@@ -40,18 +40,18 @@ export default function Login(props) {
           <label>Username: </label>
           <input
             onChange={(e) => setUsername(e.target.value)}
-            value={username}
+            value={username} id='username'
           />
         </div>
         <div>
           <label>Password: </label>
           <input
-            type="password"
+            type="password" id='password'
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" id='submit'>Login</button>
       </form>
       <BrowserRouter>
       <p><Link to="/Signup">Signup</Link></p>

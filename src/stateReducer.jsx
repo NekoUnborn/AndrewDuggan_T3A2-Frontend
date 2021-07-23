@@ -12,7 +12,7 @@ export default function stateReducer(currentState, action) {
     case "setChildren": {
       return {
         ...currentState,
-        children: action.children,
+        children: action.data,
       };
     }
 
@@ -30,7 +30,7 @@ export default function stateReducer(currentState, action) {
         token: action.data.token,
       };
     }
-    case 'updateMedicineList' : {
+    case 'setMedicineList' : {
       return {
           ...currentState, medicine: action.data  
       }
