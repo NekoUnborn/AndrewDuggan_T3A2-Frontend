@@ -26,7 +26,7 @@ function App() {
     children: [],
     message: null
   });
-  const {medicine, children} = store
+
 
   useEffect(() => {
     async function setMedicines() {
@@ -73,9 +73,6 @@ function App() {
     setChildren();
   }, [store.token]);
 
-  
-  // console.log(store)
-
   return (
     <stateContext.Provider value={{ ...store, dispatch }}>
       {store.token ? (
@@ -86,7 +83,10 @@ function App() {
           <BrowserRouter>
             {store.token.username === "admin" ? <Nav /> : <Admin />}
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" >
+                <Home></Home>
+                <Child></Child>
+                </Route>
               <Route exact path="/Signup" component={Signup} />
               <Route exact path="/medicine">
                 <Medication/>
@@ -94,9 +94,6 @@ function App() {
               <Route exact path='/medicine/add' >
                   <AddMedication/>
               </Route>
-              <Route exact path='/child'>
-                  <Child children={children}></Child>
-                </Route>
               <Route exact path='/child/:id' component={ShowChild}/>
               <Route component={NotFound} />
             </Switch>
