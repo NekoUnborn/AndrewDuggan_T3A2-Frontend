@@ -72,6 +72,8 @@ function App() {
     setMedicines();
     setChildren();
   }, [store.token]);
+
+  
   // console.log(store)
 
   return (

@@ -15,16 +15,21 @@ const AddMedication = (props) => {
                             'Content-Type' : 'application/json'},
                 body: JSON.stringify(data)
             })
+            console.log(res)
             const message = await res.json()
             // console.log(message.message)
-            dispatch({
-                type: 'addMedicine',
-                data: [data.name, data.description]
-            })
-            dispatch({
-                type: 'setMessage',
-                data: message.message
-            })
+            if(res.status == 200){
+                dispatch({
+                    type: 'addMedicine',
+                    data: [data.name, data.description]
+                })
+                dispatch({
+                    type: 'setMessage',
+                    data: message.message
+                })
+            } else {
+                console.log('Failed')
+            }
         }
         e.preventDefault()
         const data = {
