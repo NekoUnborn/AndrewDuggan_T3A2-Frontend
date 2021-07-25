@@ -4,10 +4,11 @@ import { useContext, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { stateContext } from "../stateReducer"
 
-const ChildForm = () => {
+const ChildForm = (props) => {
     const context = useContext(stateContext)
     const {token} = context
-    const [formMeds, setFormMeds] = useState([])
+    const initial = props.entries == undefined ? [] : props.entries
+    const [formMeds, setFormMeds] = useState(initial)
     const [name, setName] = useState('Test')
     const [time, setTime] = useState()
     const {filteredMedicine, dispatch} = context
@@ -28,8 +29,19 @@ const ChildForm = () => {
             })
     
         }
-        sendChildtoApi()
-        history.push('/')
+        async function updateChild() {
+            const res = await fetch(`http://localhost:4000/api/v1/children/${props.child}`, {method: 'PATCH', headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type' : 'application/json'
+            }, body: JSON.stringify({name: name, formMeds: formMeds})})
+        }
+        if(props.edit == true) {
+            updateChild()
+            props.setChecklist([...formMeds])
+        } else {
+            sendChildtoApi()
+            history.push('/')
+        }
         
 
     }

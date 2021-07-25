@@ -1,9 +1,11 @@
 import { useContext, useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { stateContext } from "../stateReducer"
+import ChildForm from "./ChildForm"
 const ShowChild = (props) => {
     const context = useContext(stateContext)
     const [checkList, setCheckList] = useState([])
+    const [editMode, setEditMode] = useState(true)
     const {token } = context
     async function fetchChild() {
         const res = await fetch(`http://localhost:4000/api/v1/children/${props.match.params.id}`,{ headers: {
@@ -16,24 +18,37 @@ const ShowChild = (props) => {
     useEffect(() => {
         fetchChild()
     },[])
-
+    function editModeSwitch () {
+        editMode ? setEditMode(false) :setEditMode(true)
+    }
+    console.log(checkList)
     return (
-        <div>
-            <h1>LEmons</h1>
-            <p>{props.id}</p>
-            {checkList.map((item, index)=>{
-               return (
-                   <>
-                   <input type="checkbox" name={item[1]} id="" />
-                   <label>{item[1]} : {item[0].time}</label>
-                   <br></br>
-                   </>
-                   ) 
-                   
-            })}
-            <Link to={`/child/${props.id}/edit`}>Edit Checklist </Link>
-            <button>Delete</button>
-        </div>
+        <>
+        {editMode ? (
+            <div>
+                <h1>LEmons</h1>
+                <p>{props.id}</p>
+                {checkList.map((item, index)=>{
+                   return (
+                       <>
+                       <input type="checkbox" name={item[1]} id="" />
+                       <label>{item.medicine} : {item.time}</label>
+                       <br></br>
+                       </>
+                       ) 
+                       
+                    })}
+                    <button onClick={editModeSwitch}>Enable Edit Mode</button>
+            </div>
+        ) : (
+            <>
+            <ChildForm entries={checkList} edit={true} child={props.match.params.id} setChecklist={setCheckList} checkList={checkList}></ChildForm>
+            <button onClick={editModeSwitch}>Disable Edit Mode</button>
+            </>
+            )
+        }
+        
+        </>
     )
 }
 
