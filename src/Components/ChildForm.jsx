@@ -9,12 +9,14 @@ const ChildForm = () => {
     const {token} = context
     const [formMeds, setFormMeds] = useState([])
     const [name, setName] = useState('Test')
+    const [time, setTime] = useState()
     const {filteredMedicine, dispatch} = context
     const history = useHistory()
 
     function addChild(e) {
         e.preventDefault()
         async function sendChildtoApi () {
+           
             const res = await fetch('http://localhost:4000/api/v1/children', {method: 'POST', headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type' : 'application/json'
@@ -48,29 +50,32 @@ const ChildForm = () => {
         
     }
     function addToMedicine(medicine){
-        console.log(medicine.target.value)
-        setFormMeds([...formMeds, medicine.target.value])
+        medicine.preventDefault()
+        setFormMeds([...formMeds, {medicine: medicine.target.value, time: time}])
+    }
+    function addTime(e) {
+        setTime(e.target.value)
     }
     function addName(e) {
-        console.log(e.target.value)
         setName(e.target.value)
     }
     return (
         <div>
             <h1> Child Form</h1>
             <form onSubmit={addChild} value={{name: name, formMeds: formMeds}}>
-                <input type="text" name="" id="" placeholder='Name' onKeyUp={addName}/>
+                <input type="text" name="" id="" placeholder='Name' onChange={addName}/>
                 <button type="submit" >Submit</button>
             </form>
-                <input type="text" name="" id="" placeholder='Medicine' onKeyUp={findMedicine}/>
+                <input type="text" name="" id="" placeholder='Medicine' onChange={findMedicine}/>
                 {filteredMedicine.length > 0 ? filteredMedicine.map((item, index) => {
                     return (
                         <>
-                        <div key={index}>
+                        <form key={index}>
                             <h3>{item.name}</h3>
                             <p>{item.description}</p>
+                            <input type="time" name="" id="" onChange={addTime} />
                             <button  value={item.name} onClick={addToMedicine}>Add</button>
-                        </div>
+                        </form>
                         </>
                     ) 
                 }) : 
@@ -79,8 +84,12 @@ const ChildForm = () => {
                 </>
                 }
             <p>{name}</p>
-            <p>{formMeds}</p>
-
+            {formMeds.map((item, index) => {
+                return (
+                    <p>{item.medicine} : {item.time} </p>
+                )
+            }
+            )}
 
         </div>
     )
