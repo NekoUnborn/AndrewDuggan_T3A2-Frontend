@@ -1,3 +1,4 @@
+
 import { createContext } from "react";
 
 export default function stateReducer(currentState, action) {
@@ -22,7 +23,16 @@ export default function stateReducer(currentState, action) {
         checkListEntries: action.data,
       };
     }
-
+    case 'updateCheckListEntries' :{
+      return {
+        ...currentState, checkListEntries: [...currentState.checkListEntries, action.data]
+      };
+    }
+    case 'updateChildren' : {
+      return {
+        ...currentState, children: [...currentState.children, action.data]
+      }
+    }
     case "setToken": {
       localStorage.setItem("token", action.data.token);
       return {
@@ -35,11 +45,19 @@ export default function stateReducer(currentState, action) {
           ...currentState, medicine: action.data  
       }
   }
+  case 'removeChild' : {
+    const newList = currentState.children.filter((child) => {
+      return child.id != action.data.id
+    })
+    return {
+      ...currentState, children: newList
+    }
+  }
   case 'filterMedicineList' : {
     let newFilter = []
     for(let item of currentState.medicine){
       if(item[0].includes(action.filterValue)){
-        newFilter.push(item)
+        newFilter.push({name: item[0], description: item[1]})
       }
     }
     return {

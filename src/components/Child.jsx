@@ -13,7 +13,17 @@ const MedBox = styled.div`
     box-sizing: border-box;
 `
 export default function Child(props) {
-    const {children } = useContext(stateContext)
+    const {children, token, dispatch} = useContext(stateContext)
+    async function deleteChild(e){
+        const {value} = e.target
+        const res = fetch(`http://localhost:4000/api/v1/children/${value}`, {method: 'DELETE', headers: {
+            Authorization: `Bearer ${token}`,
+        }})
+        dispatch({
+            type: 'removeChild',
+            data: {id: value}
+        })
+    }
     return (
         <MedBox>
         <h1>Children</h1>
@@ -21,9 +31,12 @@ export default function Child(props) {
         {children.map((child,index)=>{
             return (
                 <div>
+            <Link to={`/child/${child.id}`}>
             <h3>{child.name}</h3>
+            </Link>
+            <button onClick={deleteChild} value={child.id}>Delete</button>
             <br></br>
-            <ShowChild id={child.id}></ShowChild>
+            {/* <ShowChild id={child.id}></ShowChild> */}
             </div>
             )
         })}

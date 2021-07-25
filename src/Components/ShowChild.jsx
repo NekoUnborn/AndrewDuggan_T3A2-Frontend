@@ -3,27 +3,25 @@ import { Link } from "react-router-dom"
 import { stateContext } from "../stateReducer"
 const ShowChild = (props) => {
     const context = useContext(stateContext)
-    const {dispatch, checkListEntries} = context
+    const [checkList, setCheckList] = useState([])
+    const {token } = context
     async function fetchChild() {
-        const res = await fetch(`http://localhost:4000/api/v1/children/${props.id}`,{ headers: {
-            Authorization: `Bearer ${context.token}`
+        const res = await fetch(`http://localhost:4000/api/v1/children/${props.match.params.id}`,{ headers: {
+            Authorization: `Bearer ${token}`
           }})
         const data = await res.json()
         console.log(data)
-        dispatch({
-            type: 'setChecklistEntries', 
-            data: data
-        })
-        
+        setCheckList(data)
     }
     useEffect(() => {
         fetchChild()
-    }, [])
+    },[])
 
     return (
         <div>
+            <h1>LEmons</h1>
             <p>{props.id}</p>
-            {checkListEntries.map((item, index)=>{
+            {checkList.map((item, index)=>{
                return (
                    <>
                    <input type="checkbox" name={item[1]} id="" />
