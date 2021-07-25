@@ -12,6 +12,8 @@ import Child from "./components/Child";
 import Home from "./components/Home";
 import Signup from "./components/Signup"
 import ShowChild from "./components/ShowChild";
+import EditChecklist from "./components/EditChecklist";
+import ChildForm from "./components/ChildForm";
 const LogoHeading = styled.h1`
     text-align: center;
     color: blue;
@@ -19,7 +21,7 @@ const LogoHeading = styled.h1`
 function App() {
   const [store, dispatch] = useReducer(stateReducer, {
     categories: [],
-    entries: [],
+    checkListEntries: [],
     token: localStorage.getItem("token"),
     medicine: [],
     filteredMedicine: [],
@@ -94,7 +96,9 @@ function App() {
               <Route exact path='/medicine/add' >
                   <AddMedication/>
               </Route>
+              <Route exact path='/child/add' component={ChildForm}/>
               <Route exact path='/child/:id' component={ShowChild}/>
+              <Route exact path='/child/:id/edit' re={EditChecklist}/>
               <Route component={NotFound} />
             </Switch>
           </BrowserRouter>

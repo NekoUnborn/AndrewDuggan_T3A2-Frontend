@@ -5,7 +5,7 @@ export default function stateReducer(currentState, action) {
     case "addChecklistEntry": {
       return {
         ...currentState,
-        checklistentries: [action.data, ...currentState.checklistentries],
+        checkListEntries: [action.data, ...currentState.checkListEntries],
       };
     }
 
@@ -19,7 +19,7 @@ export default function stateReducer(currentState, action) {
     case "setChecklistEntries": {
       return {
         ...currentState,
-        checklistentries: action.checklistentries,
+        checkListEntries: action.data,
       };
     }
 
