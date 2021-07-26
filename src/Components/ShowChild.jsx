@@ -8,7 +8,7 @@ const ShowChild = (props) => {
     const [editMode, setEditMode] = useState(true)
     const {token } = context
     async function fetchChild() {
-        const res = await fetch(`http://localhost:4000/api/v1/children/${props.match.params.id}`,{ headers: {
+        const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/children/${props.match.params.id}`,{ headers: {
             Authorization: `Bearer ${token}`
           }})
         const data = await res.json()
@@ -22,11 +22,12 @@ const ShowChild = (props) => {
         editMode ? setEditMode(false) :setEditMode(true)
     }
     console.log(checkList)
+    console.log(process.env)
     return (
         <>
         {editMode ? (
             <div>
-                <h1>LEmons</h1>
+                <h1></h1>
                 <p>{props.id}</p>
                 {checkList.map((item, index)=>{
                    return (

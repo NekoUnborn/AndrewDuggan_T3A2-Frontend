@@ -34,7 +34,7 @@ function App() {
     async function setMedicines() {
       if (!store.token) return;
       const res = await fetch(
-        `http://127.0.0.1:4000/api/v1/medicines`,
+        `${process.env.REACT_APP_API_ENDPOINT}medicines`,
         {
           headers: {
             Authorization: `Bearer ${store.token}`,
@@ -57,7 +57,7 @@ function App() {
     }
     async function setChildren(){
       if (!store.token) return ;
-      const res = await fetch('http://127.0.0.1:4000/api/v1/children', {
+      const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}children`, {
         headers: {
           Authorization: `Bearer ${store.token}`
         }
@@ -74,7 +74,7 @@ function App() {
     setMedicines();
     setChildren();
   }, [store.token]);
-
+  console.log(process.env)
   return (
     <stateContext.Provider value={{ ...store, dispatch }}>
       {store.token ? (

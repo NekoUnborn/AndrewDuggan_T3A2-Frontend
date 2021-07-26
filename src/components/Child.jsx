@@ -16,7 +16,7 @@ export default function Child(props) {
     const {children, token, dispatch} = useContext(stateContext)
     async function deleteChild(e){
         const {value} = e.target
-        const res = fetch(`http://localhost:4000/api/v1/children/${value}`, {method: 'DELETE', headers: {
+        const res = fetch(`${process.env.REACT_APP_API_ENDPOINT}children/${value}`, {method: 'DELETE', headers: {
             Authorization: `Bearer ${token}`,
         }})
         dispatch({

@@ -18,7 +18,7 @@ const ChildForm = (props) => {
         e.preventDefault()
         async function sendChildtoApi () {
            
-            const res = await fetch('http://localhost:4000/api/v1/children', {method: 'POST', headers: {
+            const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}children`, {method: 'POST', headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type' : 'application/json'
             }, body: JSON.stringify({name: name, formMeds: formMeds})})
@@ -30,7 +30,7 @@ const ChildForm = (props) => {
     
         }
         async function updateChild() {
-            const res = await fetch(`http://localhost:4000/api/v1/children/${props.child}`, {method: 'PATCH', headers: {
+            const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}children/${props.child}`, {method: 'PATCH', headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type' : 'application/json'
             }, body: JSON.stringify({name: name, formMeds: formMeds})})

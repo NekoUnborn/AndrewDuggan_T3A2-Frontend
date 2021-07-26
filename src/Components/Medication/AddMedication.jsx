@@ -9,7 +9,7 @@ const AddMedication = (props) => {
     
     function submit(e){
         async function addMedicine(data) {
-            const res = await fetch('http://localhost:4000/api/v1/medicines', {
+            const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}medicines`, {
                 method: 'POST',
                 headers: {Authorization: `Bearer ${token}`,
                             'Content-Type' : 'application/json'},
