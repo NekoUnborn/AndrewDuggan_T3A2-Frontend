@@ -12,7 +12,7 @@ export default function Signup(props) {
   const submit = async (event) => {
     event.preventDefault();
     const user = { username, email, password, pin };
-    const res = await fetch("http://localhost:4000/api/v1/users/Signup", {
+    const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}users/Signup`, {
       method: "POST",
       body: JSON.stringify(user),
       headers: {
