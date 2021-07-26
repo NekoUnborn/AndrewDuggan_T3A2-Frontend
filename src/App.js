@@ -53,7 +53,6 @@ function App() {
             {store.token.username === "admin" ? <Nav /> : <Admin />}
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/Signup" component={Signup} />
               <Route exact path="/medicine" component={Medication} />
               <Route component={NotFound} />
             </Switch>
