@@ -1,17 +1,18 @@
 import { useContext, useState } from "react";
-import { stateContext } from "../stateReducer";
-import { BrowserRouter, Link} from "react-router-dom";
+import { stateContext } from "../../stateReducer";
 
-export default function Login(props) {
+export default function Signup(props) {
   const [errorMessage, setErrorMessage] = useState();
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [pin, setPin] = useState("");
   const { dispatch } = useContext(stateContext);
-  console.log(process.env.REACT_APP_API_ENDPOINT_DEV)
+
   const submit = async (event) => {
     event.preventDefault();
-    const user = { username, password };
-    const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}users/login`, {
+    const user = { username, email, password, pin };
+    const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}users/signup`, {
       method: "POST",
       body: JSON.stringify(user),
       headers: {
@@ -33,29 +34,37 @@ export default function Login(props) {
 
   return (
     <>
-      <h1>Login</h1>
       {errorMessage && <h4 style={{ color: "red" }}>{errorMessage}</h4>}
       <form onSubmit={submit}>
         <div>
           <label>Username: </label>
           <input
             onChange={(e) => setUsername(e.target.value)}
-            value={username} id='username'
+            value={username}
           />
+        </div>
+        <div>
+          <label>Email: </label>
+          <input onChange={(e) => setEmail(e.target.value)} value={email} />
         </div>
         <div>
           <label>Password: </label>
           <input
-            type="password" id='password'
+            type="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
         </div>
-        <button type="submit" id='submit'>Login</button>
+        <div>
+          <label>PIN: </label>
+          <input
+            type="integer"
+            onChange={(e) => setPin(e.target.value)}
+            value={pin}
+          />
+        </div>
+        <button type="submit">Sign Up</button>
       </form>
-      <BrowserRouter>
-      <p><Link to="/Signup">Signup</Link></p>
-      </BrowserRouter>
     </>
   );
 }
