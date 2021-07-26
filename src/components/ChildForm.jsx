@@ -35,7 +35,7 @@ const ChildForm = (props) => {
                 'Content-Type' : 'application/json'
             }, body: JSON.stringify({name: name, formMeds: formMeds})})
         }
-        if(props.edit == true) {
+        if(props.edit === true) {
             updateChild()
             props.setChecklist([...formMeds])
         } else {

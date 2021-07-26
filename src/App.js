@@ -4,13 +4,12 @@ import stateReducer, { stateContext } from "./stateReducer";
 import AddMedication from './components/medication/AddMedication';
 import styled from 'styled-components'
 import Medication from './components/medication/Medication';
-import Login from "./components/Login"
+import Credentials from "./components/credentials/Credentials"
 import NotFound from "./components/NotFound";
 import Nav from "./components/Nav";
 import Admin from "./components/Admin";
 import Child from "./components/Child";
 import Home from "./components/Home";
-import Signup from "./components/Signup"
 import ShowChild from "./components/ShowChild";
 import ChildForm from "./components/ChildForm";
 import Rewards from "./components/rewards/Rewards";
@@ -89,12 +88,11 @@ function App() {
                 <Home></Home>
                 <Child></Child>
                 </Route>
-              <Route exact path="/Signup" component={Signup} />
               <Route exact path="/medicine">
-                <Medication/>
+                <Medication />
               </Route>
               <Route exact path='/medicine/add' >
-                  <AddMedication/>
+                  <AddMedication />
               </Route>
               <Route exact path='/child/add' component={ChildForm}/>
               <Route exact path='/child/:id' component={ShowChild}/>
@@ -104,7 +102,7 @@ function App() {
           </BrowserRouter>
         </>
       ) : (
-        <Login />
+        <Credentials />
       )}
     </stateContext.Provider>
   );
