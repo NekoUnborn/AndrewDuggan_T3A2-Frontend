@@ -20,7 +20,6 @@ export default function Login(props) {
     });
 
     const data = await res.json();
-
     if (res.status === 200) {
       dispatch({
         type: "setToken",

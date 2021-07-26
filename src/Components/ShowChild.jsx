@@ -6,20 +6,43 @@ const ShowChild = (props) => {
     const context = useContext(stateContext)
     const [checkList, setCheckList] = useState([])
     const [editMode, setEditMode] = useState(true)
+    const [updateSwitch, flickSwitch] = useState(false)
     const {token } = context
     async function fetchChild() {
         const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/children/${props.match.params.id}`,{ headers: {
             Authorization: `Bearer ${token}`
           }})
         const data = await res.json()
-        console.log(data)
         setCheckList(data)
     }
     useEffect(() => {
         fetchChild()
-    },[])
+    },[updateSwitch])
     function editModeSwitch () {
         editMode ? setEditMode(false) :setEditMode(true)
+    }
+    function updatingChecked(e){
+        const itemToUpdate = checkList.find(entry =>{
+            return entry.medicine = e.target.name
+        })
+        if(itemToUpdate.complete === true) {
+            itemToUpdate.complete = false 
+        } else {
+            itemToUpdate.complete = true
+        } 
+        async function updateCompleteStatus() {
+            const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}checklist_entries/${e.target.value}`, {
+                method: 'PATCH',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type' : 'application/json'
+                },
+                body: JSON.stringify(itemToUpdate)
+            })
+            fetchChild()
+        }
+        updateCompleteStatus()
+        flickSwitch(false)
     }
     console.log(checkList)
     console.log(process.env)
@@ -32,8 +55,8 @@ const ShowChild = (props) => {
                 {checkList.map((item, index)=>{
                    return (
                        <>
-                       <input type="checkbox" name={item[1]} id="" />
-                       <label>{item.medicine} : {item.time}</label>
+                       <input type="checkbox"name={item.medicine} checked={item.complete} onChange={updatingChecked} value={item.id}/>
+                       <label>{item.id}:{item.medicine} : {item.time}</label>
                        <p>{item.description}</p>
                        <br></br>
                        </>
@@ -49,6 +72,7 @@ const ShowChild = (props) => {
             </>
             )
         }
+        <Link to={`/child/${props.match.params.id}/rewards`}>Rewards</Link>
         
         </>
     )

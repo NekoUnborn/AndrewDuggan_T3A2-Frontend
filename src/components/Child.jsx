@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { stateContext } from "../stateReducer";
-import ShowChild from "./ShowChild";
 import styled from "styled-components"
 import { Link } from "react-router-dom";
 const MedBox = styled.div`
@@ -40,9 +39,7 @@ export default function Child(props) {
             </div>
             )
         })}
-        <Link to='/child/add'>
-        <button>Add</button>
-        </Link>
+        <Link to='/child/add'><button>Add</button></Link>
         </MedBox>
     )
 }

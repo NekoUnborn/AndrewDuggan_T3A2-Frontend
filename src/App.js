@@ -1,9 +1,9 @@
 import React, { Children, useContext, useEffect, useReducer } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import stateReducer, { stateContext } from "./stateReducer";
-import AddMedication from './components/Medication/AddMedication';
+import AddMedication from './components/medication/AddMedication';
 import styled from 'styled-components'
-import Medication from './components/Medication/Medication';
+import Medication from './components/medication/Medication';
 import Login from "./components/Login"
 import NotFound from "./components/NotFound";
 import Nav from "./components/Nav";
@@ -13,6 +13,7 @@ import Home from "./components/Home";
 import Signup from "./components/Signup"
 import ShowChild from "./components/ShowChild";
 import ChildForm from "./components/ChildForm";
+import Rewards from "./components/rewards/Rewards";
 const LogoHeading = styled.h1`
     text-align: center;
     color: blue;
@@ -97,6 +98,7 @@ function App() {
               </Route>
               <Route exact path='/child/add' component={ChildForm}/>
               <Route exact path='/child/:id' component={ShowChild}/>
+              <Route exact path='/child/:id/rewards' component={Rewards}></Route>
               <Route component={NotFound} />
             </Switch>
           </BrowserRouter>
