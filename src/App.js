@@ -12,7 +12,6 @@ import Child from "./components/Child";
 import Home from "./components/Home";
 import Signup from "./components/Signup"
 import ShowChild from "./components/ShowChild";
-import EditChecklist from "./components/EditChecklist";
 import ChildForm from "./components/ChildForm";
 const LogoHeading = styled.h1`
     text-align: center;
@@ -98,7 +97,6 @@ function App() {
               </Route>
               <Route exact path='/child/add' component={ChildForm}/>
               <Route exact path='/child/:id' component={ShowChild}/>
-              <Route exact path='/child/:id/edit' re={EditChecklist}/>
               <Route component={NotFound} />
             </Switch>
           </BrowserRouter>

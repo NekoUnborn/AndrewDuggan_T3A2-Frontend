@@ -34,6 +34,7 @@ const ShowChild = (props) => {
                        <>
                        <input type="checkbox" name={item[1]} id="" />
                        <label>{item.medicine} : {item.time}</label>
+                       <p>{item.description}</p>
                        <br></br>
                        </>
                        ) 
