@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { stateContext } from "../stateReducer";
-import ShowChild from "./ShowChild";
 import styled from "styled-components"
 import { Link } from "react-router-dom";
 const MedBox = styled.div`
