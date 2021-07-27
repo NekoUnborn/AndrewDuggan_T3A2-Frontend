@@ -10,11 +10,13 @@ const ShowChild = (props) => {
     const [updateSwitch, flickSwitch] = useState(false)
     const {token } = context
     async function fetchChild() {
-        const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/children/${props.id}`,{ headers: {
+        const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}children/entries/${props.id}`,{ headers: {
             Authorization: `Bearer ${token}`
           }})
         const data = await res.json()
+        console.log(data)
         setCheckList(data)
+        console.log(checkList)
     }
     useEffect(() => {
         fetchChild()
@@ -56,7 +58,8 @@ const ShowChild = (props) => {
                    return (
                        <CheckListBox>
                        <input type="checkbox"name={item.medicine} checked={item.complete} onChange={updatingChecked} value={item.id}/>
-                       <label>{item.id}:{item.medicine} : {item.time}</label>
+                       <p>{item.id}:{item.medicine.name} : {item.time}</p>
+                       <p> {item.medicine.description}</p>
                        <p>{item.description}</p>
                        <br></br>
                        </CheckListBox>

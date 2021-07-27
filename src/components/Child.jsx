@@ -18,6 +18,7 @@ export default function Child(props) {
             data: {id: value}
         })
     }
+    console.log(children)
     return (
         <MedBox>
         <h1>Children</h1>
