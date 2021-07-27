@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { stateContext } from "../../stateReducer";
 import { BrowserRouter, Link} from "react-router-dom";
+import { CredentialForm, CredentialItem } from "../StylingComponents/StyledComponents";
 
 export default function Login(props) {
   const [errorMessage, setErrorMessage] = useState();
@@ -33,24 +34,24 @@ export default function Login(props) {
   return (
     <>
       {errorMessage && <h4 style={{ color: "red" }}>{errorMessage}</h4>}
-      <form onSubmit={submit}>
-        <div>
+      <CredentialForm onSubmit={submit}>
+        <CredentialItem>
           <label>Username: </label>
           <input
             onChange={(e) => setUsername(e.target.value)}
-            value={username} id='username'
+            value={username} id='username' placeholder='Username'
           />
-        </div>
-        <div>
+        </CredentialItem>
+        <CredentialItem>
           <label>Password: </label>
           <input
             type="password" id='password'
             onChange={(e) => setPassword(e.target.value)}
-            value={password}
+            value={password} placeholder='Password'
           />
-        </div>
+        </CredentialItem>
         <button type="submit" id='submit'>Login</button>
-      </form>
+      </CredentialForm>
     </>
   );
 }

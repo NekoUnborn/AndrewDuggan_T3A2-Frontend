@@ -95,14 +95,17 @@ function App() {
                   <AddMedication />
               </Route>
               <Route exact path='/child/add' component={ChildForm}/>
-              <Route exact path='/child/:id' component={ShowChild}/>
+              {/* <Route exact path='/child/:id' component={ShowChild}/> */}
               <Route exact path='/child/:id/rewards' component={Rewards}></Route>
               <Route component={NotFound} />
             </Switch>
           </BrowserRouter>
         </>
       ) : (
+        <>
+        <LogoHeading>MediTrack</LogoHeading>
         <Credentials />
+        </>
       )}
     </stateContext.Provider>
   );
