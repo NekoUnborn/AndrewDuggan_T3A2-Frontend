@@ -67,3 +67,8 @@ export const ChildTab = styled.div`
     display: flex;
     flex-wrap: wrap;
 `
+export const EditFormBox = styled.div`
+    background-color: pink;
+    width: 80%;
+    margin-left: 10%;
+`
