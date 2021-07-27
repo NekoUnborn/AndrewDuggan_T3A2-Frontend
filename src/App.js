@@ -5,7 +5,6 @@ import AddMedication from './components/medication/AddMedication';
 import styled from 'styled-components'
 import Credentials from "./components/credentials/Credentials"
 import NotFound from "./components/NotFound";
-import Nav from "./components/Nav";
 import Admin from "./components/Admin";
 import Child from "./components/Child";
 import Home from "./components/Home";
@@ -80,7 +79,6 @@ function App() {
             MediTrack
           </LogoHeading>
           <BrowserRouter>
-            {store.token.username === "admin" ? <Nav /> : <Admin />}
             <Switch>
               <Route exact path="/" >
                 <Home></Home>
