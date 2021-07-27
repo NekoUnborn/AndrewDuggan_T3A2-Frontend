@@ -1,7 +1,7 @@
 // Tests are commented out to reduce the load this has on the local server and the prod server
 // describe('Adding Medication to DB from Front-end', ()=>{
 //     it('Should add a medicine to the DB and fail if it exists', () =>{
-//         cy.visit('http://localhost:3000')
+//         cy.visit(Cypress.env('prod'))
 //         cy.get('#username').type('admin')
 //         cy.get('#password').type('Password')
 //         cy.get('#submit').click()
@@ -17,7 +17,7 @@
 
 // describe('Fails to create a medication entry and displays message', ()=> {
 //     it('Should fail if the description is blank',()=> {
-//         cy.visit('http://localhost:3000')
+//         cy.visit(Cypress.env('prod'))
 //         cy.get('#username').type('admin')
 //         cy.get('#password').type('Password')
 //         cy.get('#submit').click()
@@ -32,7 +32,7 @@
 
 // describe('Fail to create', () =>{
 //     it('Should fail if the name is blank',()=> {
-//         cy.visit('http://localhost:3000')
+//         cy.visit(Cypress.env('prod'))
 //         cy.get('#username').type('admin')
 //         cy.get('#password').type('Password')
 //         cy.get('#submit').click()
@@ -47,7 +47,7 @@
 
 // describe('Should Filter List', () => {
 //     it('Select the filter input and type something in it',()=> {
-//                 cy.visit('http://localhost:3000')
+//                 cy.visit(Cypress.env('prod'))
 //                 cy.get('#username').type('admin')
 //                 cy.get('#password').type('Password')
 //                 cy.get('#submit').click()
