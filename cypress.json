@@ -1,1 +1,6 @@
-{}
+{
+    "env" : {
+        "prod" : "https://cranky-tereshkova-006e78.netlify.app/",
+        "dev" : "http://localhost:3000"
+    }
+}

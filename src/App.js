@@ -5,7 +5,6 @@ import AddMedication from './components/medication/AddMedication';
 import styled from 'styled-components'
 import Credentials from "./components/credentials/Credentials"
 import NotFound from "./components/NotFound";
-import Admin from "./components/Admin";
 import Child from "./components/Child";
 import Home from "./components/Home";
 import ChildForm from "./components/ChildForm";

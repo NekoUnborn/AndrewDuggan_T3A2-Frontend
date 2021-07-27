@@ -1,6 +1,6 @@
 // describe('Should Login using Admin Account', () => {
 //     it('Should load the login page and log in and loads the dashboard', () =>{
-//         cy.visit('http://localhost:3000')
+//         cy.visit(Cypress.env('prod'))
 //         cy.get('#username').type('admin')
 //         cy.get('#password').type('Password')
 //         cy.get('#submit').click()
@@ -11,7 +11,7 @@
 
 // describe('Should signup a new user', () =>{
 //     it('Enter in new user details', () => {
-//         cy.visit('http://localhost:3000')
+//         cy.visit(Cypress.env('prod')
 //         cy.get('#signup').click()
 //         cy.get('#username').type('test')
 //         cy.get('#password').type('Password')
