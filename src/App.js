@@ -1,16 +1,14 @@
-import React, { Children, useContext, useEffect, useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import stateReducer, { stateContext } from "./stateReducer";
 import AddMedication from './components/medication/AddMedication';
 import styled from 'styled-components'
-import Medication from './components/medication/Medication';
 import Credentials from "./components/credentials/Credentials"
 import NotFound from "./components/NotFound";
 import Nav from "./components/Nav";
 import Admin from "./components/Admin";
 import Child from "./components/Child";
 import Home from "./components/Home";
-import ShowChild from "./components/ShowChild";
 import ChildForm from "./components/ChildForm";
 import Rewards from "./components/rewards/Rewards";
 const LogoHeading = styled.h1`
@@ -28,7 +26,22 @@ function App() {
     message: null
   });
 
+  async function setChildren(){
+    if (!store.token) return ;
+    const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}children`, {
+      headers: {
+        Authorization: `Bearer ${store.token}`
+      }
+    });
+    const data = await res.json()
+    if(res.status === 200) {
+      dispatch({
+        type: 'setChildren',
+        data: data
+      })
+    }
 
+  }
   useEffect(() => {
     async function setMedicines() {
       if (!store.token) return;
@@ -54,26 +67,11 @@ function App() {
         });
       }
     }
-    async function setChildren(){
-      if (!store.token) return ;
-      const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}children`, {
-        headers: {
-          Authorization: `Bearer ${store.token}`
-        }
-      });
-      const data = await res.json()
-      if(res.status === 200) {
-        dispatch({
-          type: 'setChildren',
-          data: data
-        })
-      }
-
-    }
+    
     setMedicines();
     setChildren();
   }, [store.token]);
-  console.log(process.env)
+
   return (
     <stateContext.Provider value={{ ...store, dispatch }}>
       {store.token ? (

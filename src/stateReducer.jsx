@@ -29,6 +29,7 @@ export default function stateReducer(currentState, action) {
       };
     }
     case 'updateChildren' : {
+      console.log(action.data)
       return {
         ...currentState, children: [...currentState.children, action.data]
       }
@@ -49,6 +50,7 @@ export default function stateReducer(currentState, action) {
     const newList = currentState.children.filter((child) => {
       return child.id != action.data.id
     })
+    console.log(newList)
     return {
       ...currentState, children: newList
     }

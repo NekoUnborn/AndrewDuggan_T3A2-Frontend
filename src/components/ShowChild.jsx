@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { stateContext } from "../stateReducer"
 import ChildForm from "./ChildForm"
-import { MedicationList, CheckListBox } from "./StylingComponents/StyledComponents"
+import { CheckListBox } from "./StylingComponents/StyledComponents"
 const ShowChild = (props) => {
     const context = useContext(stateContext)
     const [checkList, setCheckList] = useState([])
@@ -14,9 +14,7 @@ const ShowChild = (props) => {
             Authorization: `Bearer ${token}`
           }})
         const data = await res.json()
-        console.log(data)
         setCheckList(data)
-        console.log(checkList)
     }
     useEffect(() => {
         fetchChild()
@@ -47,13 +45,10 @@ const ShowChild = (props) => {
         updateCompleteStatus()
         flickSwitch(false)
     }
-    console.log(checkList)
-    console.log(process.env)
     return (
         <>
         {editMode ? (
             <>
-                <h1></h1>
                 {checkList.length > 1 ? checkList.map((item, index)=>{
                    return (
                        <CheckListBox>

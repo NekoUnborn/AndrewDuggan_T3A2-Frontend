@@ -7,7 +7,7 @@ import { stateContext } from "../stateReducer"
 const ChildForm = (props) => {
     const context = useContext(stateContext)
     const {token} = context
-    const initial = props.entries == undefined ? [] : props.entries
+    const initial = props.entries === undefined ? [] : props.entries
     const [formMeds, setFormMeds] = useState(initial)
     const [name, setName] = useState('Test')
     const [time, setTime] = useState()
@@ -46,7 +46,7 @@ const ChildForm = (props) => {
 
     }
     function findMedicine(e){
-        if(e.target.value.length != 0) {
+        if(e.target.value.length !== 0) {
             dispatch({
                 type: 'filterMedicineList',
                 filterValue: e.target.value

@@ -18,7 +18,7 @@ const AddMedication = (props) => {
             console.log(res)
             const message = await res.json()
             // console.log(message.message)
-            if(res.status == 201){
+            if(res.status === 201){
                 dispatch({
                     type: 'addMedicine',
                     data: [data.name, data.description]

@@ -2,7 +2,7 @@ describe('Testing the Children Feature of the Applciation', () => {
     it('should load a page with the heading Children', () => {
         cy.visit('http://localhost:3000')
         cy.get('#username').type('admin')
-        cy.get('#password').type('12345')
+        cy.get('#password').type('Password')
         cy.get('#submit').click()
         cy.contains('Home')
     })
