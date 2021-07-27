@@ -52,13 +52,18 @@ export const NavItem = styled.li`
 `
 export const CheckListBox = styled.div`
     background-color: whitesmoke;
-    display: flex; 
     align-items: center;
     justify-content: center;
-    height: 50px;
-    width: 100%;
+    height: auto;
+    width: 95%;
     text-align:center;
-    // border: black solid 2px;
+    border: black solid 2px;
     box-sizing: border-box;
     margin: 5px;
+    padding: 2px;
+`
+
+export const ChildTab = styled.div`
+    display: flex;
+    flex-wrap: wrap;
 `

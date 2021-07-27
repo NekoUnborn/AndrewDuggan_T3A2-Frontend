@@ -54,18 +54,24 @@ const ShowChild = (props) => {
         {editMode ? (
             <>
                 <h1></h1>
-                {checkList.map((item, index)=>{
+                {checkList.length > 1 ? checkList.map((item, index)=>{
                    return (
                        <CheckListBox>
-                       <input type="checkbox"name={item.medicine} checked={item.complete} onChange={updatingChecked} value={item.id}/>
-                       <p>{item.id}:{item.medicine.name} : {item.time}</p>
-                       <p> {item.medicine.description}</p>
-                       <p>{item.description}</p>
+                       <input type="checkbox"name={item.medicine} checked={item.complete} onChange={updatingChecked} value={item.checklist_entry_id}/>
+                       <label>{item.medicine} : {item.time}</label>
+                       <p> {item.description}</p>
                        <br></br>
                        </CheckListBox>
                        ) 
                        
-                    })}
+                    }) : <CheckListBox>
+                        <input type="checkbox"name={checkList.medicine} checked={checkList.complete} onChange={updatingChecked} value={checkList.id}/>
+                       <p>{checkList.medicine} : {checkList.time}</p>
+                       <p> {checkList.description}</p>
+                       <p>{checkList.description}</p>
+                       <br></br>
+                    </CheckListBox>
+                    }
                     <button onClick={editModeSwitch}>Enable Edit Mode</button>
             </>
         ) : (

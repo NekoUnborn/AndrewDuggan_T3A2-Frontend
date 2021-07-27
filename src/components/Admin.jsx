@@ -6,9 +6,9 @@ const Admin = () => {
   }
     return (
         <AdminNav>
-            <NavItem><Link style={style} id='home' to="/">Home</Link></NavItem>
+            {/* <NavItem><Link style={style} id='home' to="/">Home</Link></NavItem> */}
             {/* <li><Link id='child' to="/child" id='testchild'>Children</Link></li> */}
-            <NavItem><Link style={style} id='medicine' to='/medicine'>Medicine</Link></NavItem>
+            {/* <NavItem><Link style={style} id='medicine' to='/medicine'>Medicine</Link></NavItem> */}
         </AdminNav>
     )
 }

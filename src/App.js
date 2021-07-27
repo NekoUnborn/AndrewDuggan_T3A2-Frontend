@@ -88,9 +88,6 @@ function App() {
                 <Home></Home>
                 <Child></Child>
                 </Route>
-              <Route exact path="/medicine">
-                <Medication />
-              </Route>
               <Route exact path='/medicine/add' >
                   <AddMedication />
               </Route>
@@ -110,5 +107,6 @@ function App() {
     </stateContext.Provider>
   );
 }
+    
 
 export default App;
