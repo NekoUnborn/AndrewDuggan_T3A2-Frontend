@@ -14,9 +14,7 @@ const ShowChild = (props) => {
             Authorization: `Bearer ${token}`
           }})
         const data = await res.json()
-        console.log(data)
         setCheckList(data)
-        console.log(checkList)
     }
     useEffect(() => {
         fetchChild()
@@ -47,8 +45,6 @@ const ShowChild = (props) => {
         updateCompleteStatus()
         flickSwitch(false)
     }
-    console.log(checkList)
-    console.log(process.env)
     return (
         <>
         {editMode ? (

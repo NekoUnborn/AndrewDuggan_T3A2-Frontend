@@ -40,19 +40,19 @@ export default function Signup(props) {
           <label>Username: </label>
           <input
             onChange={(e) => setUsername(e.target.value)}
-            value={username} placeholder='Username'
+            value={username} placeholder='Username' id='username'
           />
         </CredentialItem>
         <CredentialItem>
           <label>Email: </label>
-          <input onChange={(e) => setEmail(e.target.value)} value={email} placeholder='Email'/>
+          <input onChange={(e) => setEmail(e.target.value)} value={email} placeholder='Email' id='email'/>
         </CredentialItem>
         <CredentialItem>
           <label>Password: </label>
           <input
             type="password"
             onChange={(e) => setPassword(e.target.value)}
-            value={password} placeholder='Password'
+            value={password} placeholder='Password' id='password'
           />
         </CredentialItem>
         <CredentialItem>
@@ -60,10 +60,10 @@ export default function Signup(props) {
           <input
             type="integer"
             onChange={(e) => setPin(e.target.value)}
-            value={pin} placeholder='Pin'
+            value={pin} placeholder='Pin' id='pin'
           />
         </CredentialItem>
-        <button type="submit">Sign Up</button>
+        <button type="submit" id='signup-submit'>Sign Up</button>
       </CredentialForm>
     </>
   );

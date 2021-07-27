@@ -19,8 +19,8 @@ const Medication = () => {
         <>
         <h3>
             {message}
-            </h3>
-        <input type='text' onKeyPress={filter} placeholder='Filter'></input>
+        </h3>
+        <input type='text' onKeyPress={filter} placeholder='Filter' id='filter'></input>
         <MedicationList>
             {filteredMedicine && filteredMedicine.length > 0 ? filteredMedicine.map((item, index) =>{
                 return (

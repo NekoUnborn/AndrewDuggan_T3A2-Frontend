@@ -17,9 +17,7 @@ export default function Child(props) {
             type: 'removeChild',
             data: {id: value}
         })
-        const data = await res.json()
     }
-    console.log(children)
     return (
         <MedBox>
         <Tabs>

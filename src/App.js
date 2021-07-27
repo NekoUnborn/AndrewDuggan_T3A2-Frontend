@@ -26,7 +26,22 @@ function App() {
     message: null
   });
 
+  async function setChildren(){
+    if (!store.token) return ;
+    const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}children`, {
+      headers: {
+        Authorization: `Bearer ${store.token}`
+      }
+    });
+    const data = await res.json()
+    if(res.status === 200) {
+      dispatch({
+        type: 'setChildren',
+        data: data
+      })
+    }
 
+  }
   useEffect(() => {
     async function setMedicines() {
       if (!store.token) return;
@@ -52,26 +67,11 @@ function App() {
         });
       }
     }
-    async function setChildren(){
-      if (!store.token) return ;
-      const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}children`, {
-        headers: {
-          Authorization: `Bearer ${store.token}`
-        }
-      });
-      const data = await res.json()
-      if(res.status === 200) {
-        dispatch({
-          type: 'setChildren',
-          data: data
-        })
-      }
-
-    }
+    
     setMedicines();
     setChildren();
   }, [store.token]);
-  console.log(process.env)
+
   return (
     <stateContext.Provider value={{ ...store, dispatch }}>
       {store.token ? (

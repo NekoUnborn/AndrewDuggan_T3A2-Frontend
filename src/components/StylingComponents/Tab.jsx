@@ -32,6 +32,7 @@ class Tab extends Component {
       <li
         className={className}
         onClick={onClick}
+        id={label.toLowerCase()}
       >
         {label}
       </li>
