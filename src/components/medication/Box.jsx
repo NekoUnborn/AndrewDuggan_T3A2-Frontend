@@ -1,18 +1,10 @@
-import styled from "styled-components"
-const MedBox = styled.div`
-    flex-basis: 48%;
-    background-color: whitesmoke;
-    height: 200px;
-    text-align:center;
-    border: black solid 2px;
-    box-sizing: border-box;
-`
+import { MedBox } from "../StylingComponents/StyledComponents"
+
 const Box = (props) => {
     return (
         <MedBox>
-        <h3>{props.name}</h3>
-        <br></br>
-        {props.description}
+            <h3>{props.name}</h3>
+            <p>{props.description}</p>
         </MedBox>
     )
 }

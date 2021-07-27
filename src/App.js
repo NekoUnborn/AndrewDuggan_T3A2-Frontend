@@ -11,8 +11,8 @@ import Admin from "./components/Admin";
 import Child from "./components/Child";
 import Home from "./components/Home";
 import ShowChild from "./components/ShowChild";
-import EditChecklist from "./components/EditChecklist";
 import ChildForm from "./components/ChildForm";
+import Rewards from "./components/rewards/Rewards";
 const LogoHeading = styled.h1`
     text-align: center;
     color: blue;
@@ -88,24 +88,25 @@ function App() {
                 <Home></Home>
                 <Child></Child>
                 </Route>
-              <Route exact path="/medicine">
-                <Medication />
-              </Route>
               <Route exact path='/medicine/add' >
                   <AddMedication />
               </Route>
               <Route exact path='/child/add' component={ChildForm}/>
-              <Route exact path='/child/:id' component={ShowChild}/>
-              <Route exact path='/child/:id/edit' re={EditChecklist}/>
+              {/* <Route exact path='/child/:id' component={ShowChild}/> */}
+              <Route exact path='/child/:id/rewards' component={Rewards}></Route>
               <Route component={NotFound} />
             </Switch>
           </BrowserRouter>
         </>
       ) : (
+        <>
+        <LogoHeading>MediTrack</LogoHeading>
         <Credentials />
+        </>
       )}
     </stateContext.Provider>
   );
 }
+    
 
 export default App;

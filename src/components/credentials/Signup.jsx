@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { stateContext } from "../../stateReducer";
-
+import { CredentialForm, CredentialItem } from "../StylingComponents/StyledComponents";
 export default function Signup(props) {
   const [errorMessage, setErrorMessage] = useState();
   const [username, setUsername] = useState("");
@@ -35,36 +35,36 @@ export default function Signup(props) {
   return (
     <>
       {errorMessage && <h4 style={{ color: "red" }}>{errorMessage}</h4>}
-      <form onSubmit={submit}>
-        <div>
+      <CredentialForm onSubmit={submit}>
+        <CredentialItem>
           <label>Username: </label>
           <input
             onChange={(e) => setUsername(e.target.value)}
-            value={username}
+            value={username} placeholder='Username'
           />
-        </div>
-        <div>
+        </CredentialItem>
+        <CredentialItem>
           <label>Email: </label>
-          <input onChange={(e) => setEmail(e.target.value)} value={email} />
-        </div>
-        <div>
+          <input onChange={(e) => setEmail(e.target.value)} value={email} placeholder='Email'/>
+        </CredentialItem>
+        <CredentialItem>
           <label>Password: </label>
           <input
             type="password"
             onChange={(e) => setPassword(e.target.value)}
-            value={password}
+            value={password} placeholder='Password'
           />
-        </div>
-        <div>
+        </CredentialItem>
+        <CredentialItem>
           <label>PIN: </label>
           <input
             type="integer"
             onChange={(e) => setPin(e.target.value)}
-            value={pin}
+            value={pin} placeholder='Pin'
           />
-        </div>
+        </CredentialItem>
         <button type="submit">Sign Up</button>
-      </form>
+      </CredentialForm>
     </>
   );
 }

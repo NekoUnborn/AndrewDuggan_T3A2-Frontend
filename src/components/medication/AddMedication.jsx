@@ -43,7 +43,7 @@ const AddMedication = (props) => {
         
         
         // set the message on the home page to be the result messgae etc using state etc. 
-        history.push('/medicine')
+        history.push('/')
     }
     return (
         <div>
