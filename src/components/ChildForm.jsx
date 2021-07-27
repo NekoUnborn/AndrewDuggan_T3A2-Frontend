@@ -3,7 +3,7 @@
 import { useContext, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { stateContext } from "../stateReducer"
-
+import { EditFormBox } from "./StylingComponents/StyledComponents"
 const ChildForm = (props) => {
     const context = useContext(stateContext)
     const {token} = context
@@ -71,22 +71,27 @@ const ChildForm = (props) => {
     function addName(e) {
         setName(e.target.value)
     }
+    function removeMedicine(e) {
+        const newList = formMeds.filter((item) => {
+            return item.medicine != e.target.value
+        })
+        setFormMeds(newList)
+    }
     return (
-        <div>
-            <h1> Child Form</h1>
+        <EditFormBox>
             <form onSubmit={addChild} value={{name: name, formMeds: formMeds}}>
-                <input type="text" name="" id="" placeholder='Name' onChange={addName}/>
-                <button type="submit" >Submit</button>
+                <input type="text" name="" id="child-name" placeholder='Name' onChange={addName}/>
+                <button type="submit" id='child-submit' >Submit</button>
             </form>
-                <input type="text" name="" id="" placeholder='Medicine' onChange={findMedicine}/>
+                <input type="text" name="" id="checklist-medicine" placeholder='Medicine' onChange={findMedicine}/>
                 {filteredMedicine.length > 0 ? filteredMedicine.map((item, index) => {
                     return (
                         <>
                         <form key={index}>
                             <h3>{item.name}</h3>
                             <p>{item.description}</p>
-                            <input type="time" name="" id="" onChange={addTime} />
-                            <button  value={item.name} onClick={addToMedicine}>Add</button>
+                            <input type="time" name="" id='date' onChange={addTime} />
+                            <button  value={item.name} onClick={addToMedicine} id='add'>Add</button>
                         </form>
                         </>
                     ) 
@@ -95,15 +100,20 @@ const ChildForm = (props) => {
                     <h3>No Medications Match that name <Link to='/medicine/add'>add New Medication?</Link> </h3>
                 </>
                 }
+            <div id='preview'>
             <p>{name}</p>
             {formMeds.map((item, index) => {
                 return (
+                    <>
                     <p>{item.medicine} : {item.time} </p>
+                    <button value={item.medicine} onClick={removeMedicine}>Delete</button>
+                    </>
                 )
             }
             )}
+            </div>
 
-        </div>
+        </EditFormBox>
     )
 }
 
