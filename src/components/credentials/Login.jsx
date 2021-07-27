@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { stateContext } from "../../stateReducer";
-import { BrowserRouter, Link} from "react-router-dom";
 import { CredentialForm, CredentialItem } from "../StylingComponents/StyledComponents";
 
 export default function Login(props) {

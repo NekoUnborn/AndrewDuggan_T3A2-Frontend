@@ -47,7 +47,7 @@ export default function stateReducer(currentState, action) {
   }
   case 'removeChild' : {
     const newList = currentState.children.filter((child) => {
-      return child.id != action.data.id
+      return child.id !== action.data.id
     })
     return {
       ...currentState, children: newList

@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { stateContext } from "../stateReducer"
 import ChildForm from "./ChildForm"
-import { MedicationList, CheckListBox } from "./StylingComponents/StyledComponents"
+import { CheckListBox } from "./StylingComponents/StyledComponents"
 const ShowChild = (props) => {
     const context = useContext(stateContext)
     const [checkList, setCheckList] = useState([])
@@ -53,7 +53,6 @@ const ShowChild = (props) => {
         <>
         {editMode ? (
             <>
-                <h1></h1>
                 {checkList.length > 1 ? checkList.map((item, index)=>{
                    return (
                        <CheckListBox>

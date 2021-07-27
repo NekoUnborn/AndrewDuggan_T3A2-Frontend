@@ -1,9 +1,6 @@
-import { Link } from "react-router-dom"
-import { AdminNav, NavItem } from "./StylingComponents/StyledComponents"
+
+import { AdminNav } from "./StylingComponents/StyledComponents"
 const Admin = () => {
-  const style = {
-    textDecoration: 'none'
-  }
     return (
         <AdminNav>
             {/* <NavItem><Link style={style} id='home' to="/">Home</Link></NavItem> */}

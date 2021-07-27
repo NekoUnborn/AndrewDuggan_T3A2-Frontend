@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useContext} from 'react'
+import { useContext} from 'react'
 import { Button, Text, MedicationList } from '../StylingComponents/StyledComponents'
 import { Link } from "react-router-dom"
 import { stateContext } from "../../stateReducer"
